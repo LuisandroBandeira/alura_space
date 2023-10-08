@@ -8,7 +8,8 @@ def index(request):
         2: {"nome" : "Galáxia NGC 1079",
             "legenda" : "nasa.org | NASA | Hubble"}
     }
-    fotografias = Fotografia.objects.all()
+    # Coloca-se um menos na frente do nome do campo para fazer order by desc
+    fotografias = Fotografia.objects.order_by("-data_cadastro").filter(publicar=True)
     return render(request,'galeria/index.html', {"cards": fotografias})
 
 def imagem(request, foto_id):
