@@ -3,10 +3,14 @@
     <header class="cabecalho">
         <img src="{% static '/assets/logo/Logo(2).png'%}" alt="Logo da Alura Space" />
         <div class="cabecalho__busca">
-            <div class="busca__fundo">
-                <input class="busca__input" type="text" placeholder="O que você procura?">
-                <img class="busca__icone" src="{% static '/assets/ícones/1x/search.png'%}" alt="ícone de search">
-            </div>
+            <form action="{% url 'buscar' %}">
+                <div class="busca__fundo">                
+                    <input class="busca__input" type="text" name="buscar" placeholder="O que você procura?">
+                    <button class="busca__button" type="submit" >
+                        <img class="busca__icone" src="{% static '/assets/ícones/1x/search.png'%}" alt="ícone de search">   
+                    </button>                 
+                </div>
+            </form>
         </div>
     </header>
     <main class="principal">
@@ -18,3 +22,19 @@
                 <a href="#"><img src="{% static '/assets/ícones/1x/Surpreenda-me - inativo.png'%}"> Surpreenda-me</a>
             </nav>
         </section>
+        <section class="conteudo">
+            <section class="banner">
+                <img class="banner__imagem" src="{% static '/assets/imagens/Banner(2).png'%}" alt="banner Alura Space">
+                <h1 class="banner__titulo"> A galeria mais completa de fotos do espaço!</h1>
+            </section>
+            <section class="tags">
+                <p class="tags__titulo">Busque por tags:</p>
+                <form action="{% url 'buscar' %}">
+                    <ul class="tags__lista">
+                        <li class="tags__tag"><button class="busca__button" name="categoria" type="submit" value="NEBULOSA">Nebulosa</button></li>
+                        <li class="tags__tag"><button class="busca__button" name="categoria" type="submit" value="ESTRELA">Estrela</button></li>
+                        <li class="tags__tag"><button class="busca__button" name="categoria" type="submit" value="GALÁXIA">Galáxia</button></li>
+                        <li class="tags__tag"><button class="busca__button" name="categoria" type="submit" value="PLANETA">Planeta</button></li>
+                    </ul>
+                </form>
+            </section>

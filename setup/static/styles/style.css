@@ -111,10 +111,27 @@ table {
     width: 500px;
 }
 
+.busca__input:focus {
+    color: #fff;
+}
+
 .busca__icone {
     cursor: pointer;
     width: 2rem;
     height: 2rem;
+}
+
+.busca__button {
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 .cards {
