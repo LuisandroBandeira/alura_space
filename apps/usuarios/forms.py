@@ -76,3 +76,24 @@ class CadastroForms(forms.Form)   :
          'class': 'form-control', 
          'placeholder':'Repita a sua senha'})
    )  
+
+   def clean_nome_login(self):
+      login = self.cleaned_data.get('nome_login')
+      if login:
+         login = login.strip()
+         if " " in login:
+            raise forms.ValidationError('Não pode haver espaços no nome de login.')
+         elif not login.islower():
+            raise forms.ValidationError('O nome de login deve estar em letras minusculas.')
+         else:
+            return login
+         
+   def clean_senha_2(self):
+      senha_1 = self.cleaned_data.get('senha_1')   
+      senha_2 = self.cleaned_data.get('senha_2') 
+      
+      if senha_1 and senha_2:
+         if senha_1 != senha_2:
+            raise forms.ValidationError('As senhas não são iguais')
+         else:
+            return senha_2

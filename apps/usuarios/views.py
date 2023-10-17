@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from usuarios.forms import LoginForms, CadastroForms
+from apps.usuarios.forms import LoginForms, CadastroForms
 from django.contrib.auth.models import User
 from django.contrib import auth, messages
 
@@ -36,10 +36,7 @@ def cadastro(request):
     if request.method == 'POST':
         form = CadastroForms(request.POST)               
         if form.is_valid():
-            if form['senha_1'].value() != form['senha_2'].value():
-                messages.error(request,'As senhas não são iguais', 'alert alert-danger') 
-                return redirect('cadastro')
-            
+                        
             nome = form['nome_cadastro'].value()
             sobrenome = form['sobrenome_cadastro'].value()
             login = form['nome_login'].value()

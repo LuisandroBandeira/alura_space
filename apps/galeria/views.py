@@ -1,7 +1,10 @@
-from django.shortcuts import get_object_or_404, render
-from galeria.models import Fotografia
+from django.shortcuts import get_object_or_404, render, redirect
+from apps.galeria.models import Fotografia
 
 def index(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    
     # Coloca-se um menos na frente do nome do campo para fazer order by desc
     fotografias = Fotografia.objects.order_by("-data_cadastro").filter(publicar=True)
     return render(request,'galeria/index.html', {"cards": fotografias})
@@ -12,6 +15,9 @@ def imagem(request, foto_id):
     return render(request,'galeria/imagem.html', {"fotografia":fotografia})
 
 def buscar(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     fotografias = Fotografia.objects.order_by("-data_cadastro").filter(publicar=True)
 
     if "buscar" in request.GET:

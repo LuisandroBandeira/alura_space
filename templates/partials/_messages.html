@@ -2,11 +2,11 @@
     <div style="margin: auto;">
         {% for message in messages %}
             <div class="alert {% for tag in message.extra_tags.split %} {{tag}} {%endfor%} fade show" role="alert">                
-                    <p class="text-center">
+                <p class="text-center">
                         {{ message | safe }}
-                        <a href="{% url 'login' %}"  class="close btn-sm btn btn-danger " role="button"><span aria-hidden="true">&times;</span></a> 
-                    </p>
-                </div>
+                    <a href="{% url 'login' %}"  class="close btn-sm btn btn-danger " role="button"><span aria-hidden="true">&times;</span></a> 
+                </p>
+            </div>
         {% endfor %}
     </div>
 {% endif %} 
