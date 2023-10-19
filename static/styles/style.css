@@ -475,15 +475,16 @@ table {
 }
 
 .btn-outline-light {
-    color: #f8f9fa;
+    color: #bcbec0;
     background-color: transparent;
     background-image: none;
-    border-color: #f8f9fa;
+    border-color: #bcbec0;
 }
 
 .btn-outline-light:hover {
-    background-color: #008CBA; /* change to your desired color */
-    color: white; /* change to your desired color */
+    background-color: #bcbec0; /* change to your desired color */
+    border-color: #212529;
+    color: #212529; /* change to your desired color */
 }
 
 .form-control {
@@ -526,4 +527,30 @@ table {
     appearance: none;
     -webkit-print-color-adjust: exact;
     color-adjust: exact;
+}
+
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
 }

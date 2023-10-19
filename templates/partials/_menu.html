@@ -16,10 +16,22 @@
     <main class="principal">
         <section class="menu-lateral">
             <nav class="menu-lateral__navegacao">
-                <a href="{% url 'index' %}"><img src="{% static '/assets/ícones/1x/Home - ativo.png'%}"> Home</a>
-                <a href="{% url 'login' %}"><img src="{% static '/assets/ícones/1x/Mais vistas - inativo.png'%}"> Login</a>
-                <!-- <a href="{% url 'cadastro' %}"><img src="{% static '/assets/ícones/1x/Novas - inativo.png'%}"> Cadastro Usuário</a> -->
-                <a href="{% url 'logout' %}"><img src="{% static '/assets/ícones/1x/Surpreenda-me - inativo.png'%}"> Logout</a>
+                {% if request.path == '/' %}
+                    <a href="{% url 'index' %}"><img src="{% static '/assets/ícones/1x/Home - ativo.png'%}"> Home</a>
+                {% else %}
+                    <a href="{% url 'index' %}"><img src="{% static '/assets/ícones/1x/Home - inativo.png'%}"> Home</a>
+                {% endif %}
+                {% if request.path == '/login' %}
+                    <a href="{% url 'login' %}"><img src="{% static '/assets/ícones/1x/Mais vistas - ativo.png'%}"> Login</a>
+                {% else %}
+                    <a href="{% url 'login' %}"><img src="{% static '/assets/ícones/1x/Mais vistas - inativo.png'%}"> Login</a>
+                {% endif %}
+                {% if request.path == '/cadastro_imagem' %}
+                    <a href="{% url 'nova_imagem' %}"><img src="{% static '/assets/ícones/1x/Novas - ativo.png'%}"> Nova Imagem</a>
+                {% else %}
+                    <a href="{% url 'nova_imagem' %}"><img src="{% static '/assets/ícones/1x/Novas - inativo.png'%}"> Nova Imagem</a>
+                {% endif %}
+                <a href="{% url 'logout' %}"><img src="{% static '/assets/ícones/1x/Surpreenda-me - inativo.png'%}"> Logout</a>                
             </nav>
         </section>
         <section class="conteudo">

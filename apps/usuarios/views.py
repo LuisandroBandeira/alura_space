@@ -35,8 +35,7 @@ def cadastro(request):
     form = CadastroForms()
     if request.method == 'POST':
         form = CadastroForms(request.POST)               
-        if form.is_valid():
-                        
+        if form.is_valid():                        
             nome = form['nome_cadastro'].value()
             sobrenome = form['sobrenome_cadastro'].value()
             login = form['nome_login'].value()
