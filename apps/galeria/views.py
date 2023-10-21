@@ -1,3 +1,4 @@
+import datetime
 from django.shortcuts import get_object_or_404, render, redirect
 from apps.galeria.models import Fotografia
 from apps.galeria.forms import Fotografia, FotografiaForms
@@ -43,16 +44,25 @@ def nova_imagem(request):
         # Para pegar as imagens da pagina tem usar request.FILES
         form = FotografiaForms(request.POST, request.FILES)
         if form.is_valid():
+            form.data_cadastro = datetime.datetime.now()  
             form.save()
             return redirect('index')
     return render(request, 'galeria/nova_imagem.html', {'form': form})
 
 def editar_imagem(request, foto_id):
-    fotografia = get_object_or_404(Fotografia,pk=foto_id)
-    return render(request,'galeria/nova_imagem.html', {"fotografia":fotografia})
+    fotografia = get_object_or_404(Fotografia,id=foto_id)
+    form = FotografiaForms(instance=fotografia)
+
+    if request.method == 'POST':
+        # Para pegar as imagens da pagina tem usar request.FILES, e passar a instância da fotografia
+        form = FotografiaForms(request.POST, request.FILES, instance=fotografia)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    return render(request, 'galeria/editar_imagem.html', {'form': form, 'foto_id': foto_id})
 
 def deletar_imagem(request, foto_id):
-    fotografias = Fotografia.objects.filter(pk=foto_id)
-    fotografias.delete
+    fotografia = get_object_or_404(Fotografia,id=foto_id)
+    fotografia.delete()
     return redirect('index')
 

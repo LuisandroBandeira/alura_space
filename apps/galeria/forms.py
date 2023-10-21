@@ -7,7 +7,7 @@ class FotografiaForms(forms.ModelForm):
         model = Fotografia
         # O atributo chamado exclude, nele vamos indicar os inputs que não queremos exibidos. 
         # Vamos inserir nele o publicada. Como o exclude indica uma lista, colocaremos entre colchetes.
-        exclude = ['publicar',]
+        exclude = ['publicar','data_cadastro']
         # Aqui se personaliza os labels dos campos do model
         labels = {
             'descricao' : 'Descrição',

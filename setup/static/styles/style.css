@@ -487,6 +487,32 @@ table {
     color: #212529; /* change to your desired color */
 }
 
+.btn-outline-light-sucess {
+    color: #61f180;
+    background-color: transparent;
+    background-image: none;
+    border-color: #61f180;
+}
+
+.btn-outline-light-sucess:hover {
+    background-color: #61f180; 
+    border-color: #61f180;
+    color: #212529; 
+}
+
+.btn-outline-light-danger {
+    color: #f86349;
+    background-color: transparent;
+    background-image: none;
+    border-color: #f86349;
+}
+
+.btn-outline-light-danger:hover {
+    background-color: #f86349; 
+    border-color: #f86349;
+    color: #212529; 
+}
+
 .form-control {
     display: block;
     width: 100%;
